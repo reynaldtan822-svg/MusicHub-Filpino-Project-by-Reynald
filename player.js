@@ -134,27 +134,21 @@ playNextSong();
 
 function playNextSong(){
 
-var queue=
+var queue = JSON.parse(localStorage.getItem("queue")) || [];
 
-JSON.parse(localStorage.getItem("queue"))||[];
+var currentIndex = 0;
 
-var current=
+var data = JSON.parse(localStorage.getItem("currentVideo"));
 
-JSON.parse(localStorage.getItem("currentVideo"));
+if(!data){
 
-for(var i=0;i<queue.length;i++){
+    alert("Error: No video data found.");
 
-if(queue[i].id.videoId==current.id.videoId){
+    location.href="index.html";
 
-if(i<queue.length-1){
+    throw new Error("currentVideo is null");
 
-localStorage.setItem(
-
-"currentVideo",
-
-JSON.stringify(queue[i+1])
-
-);
+}
 
 location.reload();
 
