@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#00c853">
+	<meta charset="UTF-8">
+
+	<meta name="viewport"
+	  content="width=device-width,initial-scale=1">
+
+	<title>MusicHub PH</title>
+
+<style>
+
+body{
+
+margin:0;
+
+background:#111;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+font-family:Arial;
+
+color:white;
+
+overflow:hidden;
+
+}
+
+.logo{
+
+text-align:center;
+
+animation:fade 2s;
+
+}
+
+.logo h1{
+
+font-size:45px;
+
+margin:0;
+
+}
+
+.logo p{
+
+color:#999;
+
+}
+
+.loader{
+
+margin-top:30px;
+
+width:60px;
+
+height:60px;
+
+border:6px solid #444;
+
+border-top:6px solid #00c853;
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+
+margin-left:auto;
+
+margin-right:auto;
+
+}
+
+@keyframes spin{
+
+0%{
+
+transform:rotate(0deg);
+
+}
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:scale(.8);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+</style>
+
+  </head>
+
+  <body>
+
+	<div class="logo">
+
+	  <h1>🎵</h1>
+
+	  <h2>MusicHub PH</h2>
+
+	  <p>Loading...</p>
+
+	  <div class="loader"></div>
+
+	</div>
+
+<script>
+
+setTimeout(function(){
+
+location.href="index.html";
+
+},2500);
+
+</script>
+
+  </body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#00c853">
+	<meta charset="UTF-8">
+
+	<meta name="viewport"
+	  content="width=device-width,initial-scale=1">
+
+	<title>Now Playing</title>
+
+	<link rel="stylesheet"
+	  href="player.css">
+
+  </head>
+
+  <body>
+
+	<div class="player">
+
+	  <img
+		id="cover"
+		class="cover"
+		src="https://via.placeholder.com/300">
+
+	  <h2 id="title">
+
+		Unknown Song
+
+	  </h2>
+
+	  <p id="artist">
+
+		Unknown Artist
+
+	  </p>
+
+	  <input
+		type="range"
+		value="0">
+
+	  <div class="buttons">
+
+		<button>⏮</button>
+
+		<button id="play">
+
+		  ▶
+
+		</button>
+
+		<button>⏭</button>
+
+	  </div>
+
+	  <div class="extra">
+
+		<button>❤️</button>
+
+		<button>🔀</button>
+
+		<button>🔁</button>
+
+	  </div>
+
+	</div>
+
+	<script src="player.js"></script>
+
+  </body>
+</html>

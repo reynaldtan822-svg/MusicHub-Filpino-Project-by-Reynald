@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<link rel="manifest" href="manifest.json">
+	<meta name="theme-color" content="#00c853">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<title>MusicHub PH</title>
+
+	<link rel="stylesheet" href="style.css">
+
+	  
+	  
+  </head>
+  <div id="toast" class="toast"></div>
+  <body>
+
+	<header>
+
+	  <h1>🎵 MusicHub PH</h1>
+
+	  <input
+		id="search"
+		type="text"
+		placeholder="Search music...">
+
+	</header>
+
+	<div class="hero">
+
+	  <h2>Welcome to MusicHub PH</h2>
+
+	  <p>Discover your favorite music anytime.</p>
+
+	  <button id="discoverBtn">
+
+		Discover Now
+
+	  </button>
+
+	</div>
+
+	<div class="categories">
+
+	  <button>🎤 OPM</button>
+
+	  <button>🎧 Pop</button>
+
+	  <button>🎸 Rock</button>
+
+	  <button>🎹 Lo-Fi</button>
+
+	  <button>🎼 Classical</button>
+
+	</div>
+
+	<h2 class="section">
+
+	  🔥 Trending
+
+	</h2>
+
+	<div id="trendingSongs">
+
+	</div>
+
+	<h2 class="section">
+
+	  🕒 Recently Played
+
+	</h2>
+
+	<div id="recentSongs">
+
+	</div>
+
+	<h2 class="section">
+
+	  ⭐ Recommended
+
+	</h2>
+
+	<div id="recommendSongs">
+
+	</div>
+	
+	<h2 class="title">🔥 Trending Songs</h2>
+
+	<div id="musicList">
+
+	</div>
+
+	<div id="miniPlayer" class="mini-player">
+
+	  <img id="miniCover"
+		src="assets/default-cover.png">
+
+	  <div class="mini-info">
+
+		<h3 id="miniTitle">
+		  No Song Playing
+		</h3>
+
+		<p id="miniArtist">
+		  Select a song
+		</p>
+
+	  </div>
+
+	  <button id="miniPlay">
+		▶
+	  </button>
+
+	</div>
+	
+	<nav class="bottom-nav">
+
+	  <button onclick="location.href='index.html'">
+
+		<span>🏠</span>
+
+		<p>Home</p>
+
+	  </button>
+
+	  <button>
+
+		<span>🔍</span>
+
+		<p>Search</p>
+
+	  </button>
+
+	  <button onclick="location.href='favorites.html'">
+
+		<span>❤️</span>
+
+		<p>Favorites</p>
+
+	  </button>
+
+	  <button onclick="location.href='playlist.html'">
+
+		<span>📂</span>
+
+		<p>Playlist</p>
+
+	  </button>
+
+	  <button onclick="location.href='settings.html'">
+
+		<span>⚙️</span>
+
+		<p>Settings</p>
+
+	  </button>
+
+	
+	</nav>
+
+	<script src="script.js"></script>
+
+  </body>
+</html>
