@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+
 <html>
 
   <head>
-	<link rel="manifest" href="manifest.json">
-	<meta name="theme-color" content="#00c853">
+
 	<meta charset="UTF-8">
 
 	<meta name="viewport"
@@ -21,53 +21,120 @@
 	<div class="player">
 
 	  <img
-		id="cover"
-		class="cover"
-		src="https://via.placeholder.com/300">
+		id="cover">
 
-	  <h2 id="title">
+	  <h2 id="title"></h2>
 
-		Unknown Song
+	  <p id="channel"></p>
 
-	  </h2>
+	  <div id="player"></div>
+	  
+	  <div class="speed-controls">
 
-	  <p id="artist">
+		<label>
 
-		Unknown Artist
+		  Speed
 
-	  </p>
+		</label>
 
-	  <input
-		type="range"
-		value="0">
+		<select id="speedSelect">
 
-	  <div class="buttons">
+		  <option value="0.5">0.5x</option>
 
-		<button>⏮</button>
+		  <option value="0.75">0.75x</option>
 
-		<button id="play">
+		  <option value="1" selected>1x</option>
 
-		  ▶
+		  <option value="1.25">1.25x</option>
+
+		  <option value="1.5">1.5x</option>
+
+		  <option value="2">2x</option>
+
+		</select>
+
+	  </div>
+	  
+	  <div class="player-controls">
+
+		<div class="time-row">
+
+		  <span id="currentTime">0:00</span>
+
+		  <input
+			type="range"
+			id="progressBar"
+			value="0"
+			min="0"
+			max="100">
+
+		  <span id="duration">0:00</span>
+
+		</div>
+
+		<div class="volume-row">
+
+		  🔊
+
+		  <input
+			type="range"
+			id="volumeBar"
+			min="0"
+			max="100"
+			value="100">
+
+		</div>
+
+	  </div> 
+	  
+	  <div class="actions">
+
+		<button id="favBtn">
+
+		  ❤️ Favorite
+
+		</button>
+		
+		<button id="playlistBtn">
+
+		  ➕ Playlist
+
+		</button>
+		
+		<button id="shareBtn">
+
+		  📤 Share
+
+		</button>
+		
+		<button id="prevBtn">
+
+		  ⏮ Previous
 
 		</button>
 
-		<button>⏭</button>
+		<button id="nextBtn">
 
-	  </div>
+		  Next ⏭
 
-	  <div class="extra">
+		</button>
+		
+		<button id="shuffleBtn">🔀 Shuffle</button>
 
-		<button>❤️</button>
+		<button id="repeatBtn">🔁 Repeat</button>
 
-		<button>🔀</button>
+		<button id="queueBtn">📜 Queue</button>
 
-		<button>🔁</button>
-
+		<button id="clearQueueBtn">🗑️ Clear</button>
+		
 	  </div>
 
 	</div>
 
+	<script src="https://www.youtube.com/iframe_api"></script>
+
 	<script src="player.js"></script>
 
   </body>
+
 </html>
