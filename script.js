@@ -115,17 +115,23 @@ encodeURIComponent(keyword)+
 
 function showResults(){
 
-	alert("showResults called");
-	
-    musicList.innerHTML="";
+    alert("Items: " + currentResults.length);
 
-    if(currentResults.length===0){
+    musicList.innerHTML = "";
 
-        musicList.innerHTML="<p>No music found.</p>";
+    for(var i = 0; i < currentResults.length; i++){
 
-        return;
+        var item = currentResults[i];
+
+        var p = document.createElement("p");
+
+        p.textContent = item.snippet.title;
+
+        musicList.appendChild(p);
 
     }
+
+}
 
     for(var i=0; i<currentResults.length; i++){
        var item=currentResults[i];
