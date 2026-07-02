@@ -1,165 +1,82 @@
-<!DOCTYPE html>
-<html>
-  <head>
-	<link rel="manifest" href="manifest.json">
-	<meta name="theme-color" content="#00c853">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
 
-	<title>MusicHub PH</title>
+	<!DOCTYPE html>
+	<html lang="en">
 
-	<link rel="stylesheet" href="style.css">
+	  <head>
+		<link rel="manifest" href="manifest.json">
+		<meta name="theme-color" content="#00c853">
+		  
+		<meta charset="UTF-8">
 
-	  
-	  
-  </head>
-  <div id="toast" class="toast"></div>
-  <body>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<header>
+		<title>MusicHub PH</title>
 
-	  <h1>🎵 MusicHub PH</h1>
+		<link rel="stylesheet" href="style.css">
 
-	  <input
-		id="search"
-		type="text"
-		placeholder="Search music...">
-	  <div id="musicList"></div>
-	</header>
+		<link rel="manifest" href="manifest.json">
 
-	<div class="hero">
+		<meta name="theme-color" content="#00c853">
 
-	  <h2>Welcome to MusicHub PH</h2>
+	  </head>
 
-	  <p>Discover your favorite music anytime.</p>
+	  <body>
 
-	  <button id="discoverBtn">
+		<header>
 
-		Discover Now
+		  <h1>🎵 MusicHub PH</h1>
 
-	  </button>
+		</header>
 
-	</div>
+		<div class="searchBox">
 
-	<div class="categories">
+		  <input
+			type="text"
+			id="search"
+			placeholder="Search music on YouTube...">
 
-	  <button>🎤 OPM</button>
+		</div>
 
-	  <button>🎧 Pop</button>
+		<div id="musicList">
 
-	  <button>🎸 Rock</button>
+		</div>
 
-	  <button>🎹 Lo-Fi</button>
+		<div id="toast">
 
-	  <button>🎼 Classical</button>
+		</div>
 
-	</div>
+		<div class="mini-player">
 
-	<h2 class="section">
+		  <img
+			id="miniCover"
+			src="assets/default-cover.png">
 
-	  🔥 Trending
+		  <div>
 
-	</h2>
+			<h3 id="miniTitle">
 
-	<div id="trendingSongs">
+			  No Music
 
-	</div>
+			</h3>
 
-	<h2 class="section">
+			<p id="miniArtist">
 
-	  🕒 Recently Played
+			  Ready
 
-	</h2>
+			</p>
 
-	<div id="recentSongs">
+		  </div>
 
-	</div>
+		  <button id="miniPlay">
 
-	<h2 class="section">
+			▶
 
-	  ⭐ Recommended
+		  </button>
 
-	</h2>
+		</div>
 
-	<div id="recommendSongs">
+		<script src="script.js"></script>
 
-	</div>
-	
-	<h2 class="title">🔥 Trending Songs</h2>
+	  </body>
 
-	<div id="musicList">
-
-	</div>
-
-	<div id="miniPlayer" class="mini-player">
-
-	  <img id="miniCover"
-		src="assets/default-cover.png">
-
-	  <div class="mini-info">
-
-		<h3 id="miniTitle">
-		  No Song Playing
-		</h3>
-
-		<p id="miniArtist">
-		  Select a song
-		</p>
-
-	  </div>
-
-	  <button id="miniPlay">
-		▶
-	  </button>
-
-	</div>
-	
-	<nav class="bottom-nav">
-
-	  <button onclick="location.href='index.html'">
-
-		<span>🏠</span>
-
-		<p>Home</p>
-
-	  </button>
-
-	  <button>
-
-		<span>🔍</span>
-
-		<p>Search</p>
-
-	  </button>
-
-	  <button onclick="location.href='favorites.html'">
-
-		<span>❤️</span>
-
-		<p>Favorites</p>
-
-	  </button>
-
-	  <button onclick="location.href='playlist.html'">
-
-		<span>📂</span>
-
-		<p>Playlist</p>
-
-	  </button>
-
-	  <button onclick="location.href='settings.html'">
-
-		<span>⚙️</span>
-
-		<p>Settings</p>
-
-	  </button>
-
-	
-	</nav>
-
-	<script src="script.js"></script>
-
-  </body>
-</html>
+	</html>

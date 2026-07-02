@@ -2,256 +2,127 @@
 
 //const API_KEY="AIzaSyCRNstiZBF60oTLoy6XCNEc2LqiVcO7oww"
 
-const API_KEY = "AIzaSyCRNstiZBF60oTLoy6XCNEc2LqiVcO7oww";
+// ==============================
+// MusicHub PH v1.0
+// Core Script
+// Part 2.1
+// ==============================
 
-var searchBox = document.getElementById("search");
-var musicList = document.getElementById("musicList");
-var songs=[
+// ===== YouTube API KEY =====
+const API_KEY = "ILAGAY_DITO_ANG_API_KEY_MO";
 
-{
+// ===== HTML Elements =====
+const searchInput = document.getElementById("search");
+const musicList = document.getElementById("musicList");
+const toast = document.getElementById("toast");
 
-title:"Shape of You",
+// ===== Current Search Result =====
+let currentResults = [];
 
-artist:"Ed Sheeran",
+// ===== Toast Message =====
+function showToast(message){
 
-image:"https://i.imgur.com/J5LVHEL.jpeg"
+    toast.innerHTML = message;
 
-},
+    toast.style.opacity = "1";
 
-{
+    setTimeout(function(){
 
-title:"Believer",
+        toast.style.opacity = "0";
 
-artist:"Imagine Dragons",
-
-image:"https://i.imgur.com/BxR5qEl.jpeg"
-
-},
-
-{
-
-title:"Perfect",
-
-artist:"Ed Sheeran",
-
-image:"https://i.imgur.com/J5LVHEL.jpeg"
-
-},
-
-{
-
-title:"Pasilyo",
-
-artist:"SunKissed Lola",
-
-image:"https://i.imgur.com/Vf7v5Vf.jpeg"
+    },2000);
 
 }
 
-];
+// ==============================
+// Search when Enter is pressed
+// ==============================
 
-var music=document.getElementById("musicList");
+searchInput.addEventListener("keypress",function(event){
 
-showSongs(songs);
+    if(event.key==="Enter"){
 
-function showSongs(list){
+        const keyword=searchInput.value.trim();
 
-music.innerHTML="";
+        if(keyword===""){
 
+            showToast("Please enter a music title.");
 
-for(var i=0;i<list.length;i++){
+            return;
 
-music.innerHTML+=
-
-'<div class="card">'+
-
-'<img src="'+list[i].image+'">'+
-
-'<div class="info">'+
-
-'<h3>'+list[i].title+'</h3>'+
-
-'<p>'+list[i].artist+'</p>'+
-
-'<button class="play">Play</button>'+
-
-'</div>'+
-
-'</div>';
-
-}
-
-}
-
-document.getElementById("search").onkeyup=function(){
-
-var keyword=this.value.toLowerCase();
-
-var result=[];
-
-for(var i=0;i<songs.length;i++){
-
-if(
-
-songs[i].title.toLowerCase().indexOf(keyword)>-1 ||
-
-songs[i].artist.toLowerCase().indexOf(keyword)>-1
-
-){
-
-result.push(songs[i]);
-
-}
-
-}
-
-showSongs(result);
-
-};
-
-function toast(msg){
-
-var t=document.getElementById("toast");
-
-t.innerHTML=msg;
-
-t.style.display="block";
-
-setTimeout(function(){
-
-t.style.display="none";
-
-},2000);
-
-}
-
-var miniPlaying=false;
-
-document.getElementById("miniPlay").onclick=function(){
-
-miniPlaying=!miniPlaying;
-
-this.innerHTML=miniPlaying?"⏸":"▶";
-
-};
-
-function updateMiniPlayer(title,artist,image){
-
-document.getElementById("miniTitle").innerHTML=title;
-
-document.getElementById("miniArtist").innerHTML=artist;
-
-document.getElementById("miniCover").src=image;
-
-//updateMiniPlayer(title,artist,image);
-}
-
-document.getElementById("discoverBtn").onclick=function(){
-
-toast("🎵 Explore Trending Music");
-
-};
-
-if("serviceWorker" in navigator){
-
-window.addEventListener("load",function(){
-
-navigator.serviceWorker.register("sw.js");
-
-});
-
-}
-
-searchBox.onkeyup = function(){
-
-    var keyword = this.value;
-
-    if(keyword.length >= 3){
+        }
 
         searchYouTube(keyword);
 
     }
 
-};
-
-function searchYouTube(query){
-
-var url =
-"https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q="
-+ encodeURIComponent(query)
-+ "&key="
-+ API_KEY;
-
-fetch(url)
-
-.then(function(response){
-
-return response.json();
-
-})
-
-.then(function(data){
-
-musicList.innerHTML="";
-
-window.currentResults = data.items;
-
-if(data.error){
-
-musicList.innerHTML="<h3>"+data.error.message+"</h3>";
-
-return;
-
-}
-
-for(var i=0;i<data.items.length;i++){
-
-var item=data.items[i];
-
-musicList.innerHTML +=
-
-'<div class="card">'+
-
-'<img src="'+item.snippet.thumbnails.medium.url+'">'+
-
-'<div class="info">'+
-
-'<h3>'+item.snippet.title+'</h3>'+
-
-'<p>'+item.snippet.channelTitle+'</p>'+
-
-'<button onclick="openPlayerByIndex('+i+')">▶ Play</button>'+
-
-'</div>'+
-
-'</div>';
-
-}
-
 });
 
-}
+// ==============================
+// Search YouTube
+// ==============================
 
-function openPlayer(video){
+async function searchYouTube(keyword){
 
-localStorage.setItem("currentVideo",JSON.stringify(video));
+    musicList.innerHTML="<p>Searching...</p>";
 
-location.href="player.html";
+    try{
 
-}
+        const url=
 
-function openPlayerByIndex(index){
+"https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q="+
 
-    if(!window.currentResults || !window.currentResults[index]){
-        alert("No video selected.");
-        return;
+encodeURIComponent(keyword)+
+
+"&key="+API_KEY;
+
+        const response=await fetch(url);
+
+        const data=await response.json();
+
+        if(data.error){
+
+            showToast(data.error.message);
+
+            musicList.innerHTML="";
+
+            return;
+
+        }
+
+        currentResults=data.items;
+
+        showResults();
+
     }
 
-    localStorage.setItem(
-        "currentVideo",
-        JSON.stringify(window.currentResults[index])
-    );
+    catch(error){
 
-    location.href = "player.html";
+        console.log(error);
+
+        showToast("Connection Failed");
+
+        musicList.innerHTML="";
+
+    }
+
+}
+
+// ==============================
+// Show Search Result
+// (Temporary)
+// ==============================
+
+function showResults(){
+
+    musicList.innerHTML="";
+
+    showToast(
+
+        currentResults.length+
+
+        " music found."
+
+    );
 
 }
