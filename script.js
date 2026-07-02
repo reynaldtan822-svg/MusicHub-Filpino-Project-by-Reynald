@@ -117,12 +117,70 @@ function showResults(){
 
     musicList.innerHTML="";
 
-    showToast(
+    if(currentResults.length===0){
 
-        currentResults.length+
+        musicList.innerHTML="<p>No music found.</p>";
 
-        " music found."
+        return;
+
+    }
+
+    for(let i=0;i<currentResults.length);i++{
+
+        const item=currentResults[i];
+
+        musicList.innerHTML+=
+
+        '<div class="card">'+
+
+        '<img src="'+item.snippet.thumbnails.medium.url+'">'+
+
+        '<div class="info">'+
+
+        '<h3>'+item.snippet.title+'</h3>'+
+
+        '<p>'+item.snippet.channelTitle+'</p>'+
+
+        '<button onclick="openPlayerByIndex('+i+')">▶ Play</button>'+
+
+        '</div>'+
+
+        '</div>';
+
+    }
+
+}
+
+// ==============================
+// Open Player
+// ==============================
+
+function openPlayerByIndex(index){
+
+    if(index<0 || index>=currentResults.length){
+
+        showToast("Invalid music.");
+
+        return;
+
+    }
+
+    localStorage.setItem(
+
+        "currentVideo",
+
+        JSON.stringify(currentResults[index])
 
     );
+
+    localStorage.setItem(
+
+        "queue",
+
+        JSON.stringify(currentResults)
+
+    );
+
+    location.href="player.html";
 
 }
