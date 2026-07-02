@@ -242,11 +242,16 @@ location.href="player.html";
 
 function openPlayerByIndex(index){
 
-localStorage.setItem(
-"currentVideo",
-JSON.stringify(window.currentResults[index])
-);
+    if(!window.currentResults || !window.currentResults[index]){
+        alert("No video selected.");
+        return;
+    }
 
-location.href="player.html";
+    localStorage.setItem(
+        "currentVideo",
+        JSON.stringify(window.currentResults[index])
+    );
+
+    location.href = "player.html";
 
 }
