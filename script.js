@@ -115,6 +115,8 @@ encodeURIComponent(keyword)+
 
 function showResults(){
 
+	alert("showResults called");
+	
     musicList.innerHTML="";
 
     if(currentResults.length===0){
@@ -125,9 +127,8 @@ function showResults(){
 
     }
 
-    for(let i=0;i<currentResults.length);i++{
-
-        const item=currentResults[i];
+    for(var i=0; i<currentResults.length; i++){
+       var item=currentResults[i];
 
         musicList.innerHTML+=
 
