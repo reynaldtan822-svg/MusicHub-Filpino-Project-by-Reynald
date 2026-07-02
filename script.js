@@ -58,7 +58,6 @@ function showSongs(list){
 
 music.innerHTML="";
 
-window.currentResults=data.items;
 
 for(var i=0;i<list.length;i++){
 
@@ -195,6 +194,8 @@ return response.json();
 
 musicList.innerHTML="";
 
+window.currentResults = data.items;
+
 if(data.error){
 
 musicList.innerHTML="<h3>"+data.error.message+"</h3>";
@@ -219,7 +220,7 @@ musicList.innerHTML +=
 
 '<p>'+item.snippet.channelTitle+'</p>'+
 
-'<button onclick=\'openPlayer('+JSON.stringify(item)+')\'>▶ Play</button>'
+'<button onclick="openPlayerByIndex('+i+')">▶ Play</button>'+
 
 '</div>'+
 
@@ -236,8 +237,6 @@ function openPlayer(video){
 localStorage.setItem("currentVideo",JSON.stringify(video));
 
 location.href="player.html";
-
-}
 
 }
 
