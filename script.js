@@ -115,19 +115,43 @@ encodeURIComponent(keyword)+
 
 function showResults(){
 
-    alert("Items: " + currentResults.length);
-
     musicList.innerHTML = "";
 
     for(var i = 0; i < currentResults.length; i++){
 
         var item = currentResults[i];
 
-        var p = document.createElement("p");
+        var card = document.createElement("div");
+        card.className = "card";
 
-        p.textContent = item.snippet.title;
+        var img = document.createElement("img");
+        img.src = item.snippet.thumbnails.medium.url;
 
-        musicList.appendChild(p);
+        var title = document.createElement("h3");
+        title.textContent = item.snippet.title;
+
+        var channel = document.createElement("p");
+        channel.textContent = item.snippet.channelTitle;
+
+        var btn = document.createElement("button");
+        btn.textContent = "▶ Play";
+
+        btn.onclick = (function(index){
+
+            return function(){
+
+                openPlayerByIndex(index);
+
+            };
+
+        })(i);
+
+        card.appendChild(img);
+        card.appendChild(title);
+        card.appendChild(channel);
+        card.appendChild(btn);
+
+        musicList.appendChild(card);
 
     }
 
