@@ -9,7 +9,7 @@
 // ==============================
 
 // ===== YouTube API KEY =====
-const API_KEY = "ILAGAY_DITO_ANG_API_KEY_MO";
+const API_KEY = "AIzaSyCRNstiZBF60oTLoy6XCNEc2LqiVcO7oww";
 
 // ===== HTML Elements =====
 const searchInput = document.getElementById("search");
